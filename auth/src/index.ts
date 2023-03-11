@@ -8,10 +8,22 @@ import { signupRouter } from './routes/signup';
 import { errorHandler } from './middleware/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
 
 const PORT = 4000;
 const app = express();
+
+// express is behind the ingress nginx proxy
+app.set('trust proxy', true);
 app.use(json());
+
+app.use(
+  cookieSession({
+    signed: false,
+    secure: true,
+    maxAge: 1 * 60 * 60 * 1000, // 1 hour
+  })
+);
 
 app.use(currentUserRouter);
 app.use(signinRouter);
@@ -26,6 +38,10 @@ app.all('*', async (req, res) => {
 app.use(errorHandler);
 
 async function main() {
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT_KEY must be defined');
+  }
+
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
     console.log('Connected to MongoDb');
