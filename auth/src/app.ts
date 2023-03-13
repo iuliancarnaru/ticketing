@@ -19,7 +19,7 @@ app.use(json());
 app.use(
   cookieSession({
     signed: false,
-    secure: true,
+    secure: process.env.NODE_ENV !== 'test',
     maxAge: 1 * 60 * 60 * 1000, // 1 hour
   })
 );
