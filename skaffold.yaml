@@ -12,8 +12,17 @@ build:
         manual:
           - dest: .
             src: 'src/**/*.ts'
+    - image: iuliancarnaru/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '**/*.js'
 manifests:
   rawYaml:
     - infra/k8s/auth-depl.yaml
     - infra/k8s/auth-mongo-depl.yaml
     - infra/k8s/ingress-srv.yaml
+    - infra/k8s/client-depl.yaml

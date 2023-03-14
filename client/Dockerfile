@@ -8,4 +8,4 @@ RUN pnpm install --frozen-lockfile --prod
 
 COPY . .
 
-CMD [ "pnpm", "start" ]
+CMD [ "pnpm", "dev" ]
