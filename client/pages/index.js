@@ -1,5 +1,14 @@
-function HomePage() {
-  return <h1>Landing Page</h1>;
-}
+import buildClient from '../api/build-client';
 
-export default HomePage;
+const LandingPage = ({ currentUser }) => {
+  console.log(currentUser);
+
+  return <h1>Landing Page</h1>;
+};
+
+LandingPage.getInitialProps = async (context) => {
+  const { data } = await buildClient(context).get('/api/users/currentuser');
+  return data;
+};
+// ingress - nginx - controller;
+export default LandingPage;
