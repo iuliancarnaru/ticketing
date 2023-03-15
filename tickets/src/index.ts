@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { app } from './app';
 
-const PORT = 4000;
+const PORT = 4001;
 
 async function main() {
   if (!process.env.JWT_KEY) {
@@ -9,13 +9,15 @@ async function main() {
   }
 
   try {
-    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
-    console.log('Connected to Auth-MongoDb');
+    await mongoose.connect('mongodb://tickets-mongo-srv:27017/auth');
+    console.log('Connected to Tickets-MongoDb');
   } catch (error) {
     console.error(error);
   }
 
-  app.listen(PORT, () => console.log(`Auth service running on port: ${PORT}`));
+  app.listen(PORT, () =>
+    console.log(`Tickets service running on port: ${PORT}`)
+  );
 }
 
 main();

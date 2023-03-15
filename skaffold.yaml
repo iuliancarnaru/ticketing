@@ -12,6 +12,14 @@ build:
         manual:
           - dest: .
             src: 'src/**/*.ts'
+    - image: iuliancarnaru/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.ts'
     - image: iuliancarnaru/client
       context: client
       docker:
@@ -23,6 +31,8 @@ build:
 manifests:
   rawYaml:
     - infra/k8s/auth-depl.yaml
-    - infra/k8s/auth-mongo-depl.yaml
-    - infra/k8s/ingress-srv.yaml
     - infra/k8s/client-depl.yaml
+    - infra/k8s/tickets-depl.yaml
+    - infra/k8s/auth-mongo-depl.yaml
+    - infra/k8s/tickets-mongo-depl.yaml
+    - infra/k8s/ingress-srv.yaml
