@@ -5,6 +5,8 @@ import { currentUser, errorHandler, NotFoundError } from '@tkts/common';
 import cookieSession from 'cookie-session';
 import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
+import { allTicketsRouter } from './routes/all';
+import { updateTicketRouter } from './routes/update';
 
 const app = express();
 
@@ -24,6 +26,8 @@ app.use(currentUser);
 
 app.use(createTicketRouter);
 app.use(showTicketRouter);
+app.use(allTicketsRouter);
+app.use(updateTicketRouter);
 
 // use 'all' to catch all methods (GET, POST...)
 app.all('*', async (req, res) => {

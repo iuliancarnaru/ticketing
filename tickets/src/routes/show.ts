@@ -1,6 +1,5 @@
-import { NotFoundError, requireAuth, validateRequest } from '@tkts/common';
+import { NotFoundError } from '@tkts/common';
 import express, { Request, Response } from 'express';
-import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
 
 const router = express.Router();
