@@ -1,10 +1,11 @@
 import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
-import { errorHandler, NotFoundError } from '@tkts/common';
+import { currentUser, errorHandler, NotFoundError } from '@tkts/common';
 import cookieSession from 'cookie-session';
+import { createTicketRouter } from './routes/new';
+import { showTicketRouter } from './routes/show';
 
-const PORT = 4000;
 const app = express();
 
 // express is behind the ingress nginx proxy
@@ -18,6 +19,11 @@ app.use(
     maxAge: 1 * 60 * 60 * 1000, // 1 hour
   })
 );
+
+app.use(currentUser);
+
+app.use(createTicketRouter);
+app.use(showTicketRouter);
 
 // use 'all' to catch all methods (GET, POST...)
 app.all('*', async (req, res) => {

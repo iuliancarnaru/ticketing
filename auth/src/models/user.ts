@@ -2,13 +2,9 @@ import { Schema, model, Model, Document } from 'mongoose';
 import { Password } from '../services/password';
 // import * as argon2 from 'argon2';
 
-interface IUser {
+interface UserAttrs {
   email: string;
   password: string;
-}
-
-interface UserModel extends Model<UserDocument> {
-  build(attrs: IUser): UserDocument;
 }
 
 interface UserDocument extends Document {
@@ -16,7 +12,11 @@ interface UserDocument extends Document {
   password: string;
 }
 
-const userSchema = new Schema<IUser>(
+interface UserModel extends Model<UserDocument> {
+  build(attrs: UserAttrs): UserDocument;
+}
+
+const userSchema = new Schema<UserAttrs>(
   {
     email: {
       type: String,
@@ -54,7 +54,7 @@ userSchema.pre('save', async function (done) {
 });
 
 // to enforce TS check
-userSchema.statics.build = (attrs: IUser) => {
+userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
 

@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@tkts/common': ^1.0.3
+  '@tkts/common': ^1.0.4
   '@types/body-parser': ^1.19.2
   '@types/cookie-session': ^2.0.44
   '@types/express': ^4.17.17
@@ -25,7 +25,7 @@ specifiers:
   typescript: ^4.9.5
 
 dependencies:
-  '@tkts/common': 1.0.3
+  '@tkts/common': 1.0.4
   '@types/body-parser': 1.19.2
   '@types/cookie-session': 2.0.44
   '@types/express': 4.17.17
@@ -1526,8 +1526,8 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@tkts/common/1.0.3:
-    resolution: {integrity: sha512-js77mfAsfCichc7Qdab83w6dLEBe/3UEzeiHD1YALvjV5UAUDL+0JHtlnGAd7GWZ2Wv3nTcWvU9HIVU9pX3zsQ==}
+  /@tkts/common/1.0.4:
+    resolution: {integrity: sha512-kF3IwhLdiQG4jldTuzLmRJNtA6O9BfL/XAm4XtgTIQ25urQU/WlCGtWDho3GIFnq6VeaikVeDkRyGzzNP/sbzg==}
     dependencies:
       '@types/cookie-session': 2.0.44
       '@types/express': 4.17.17
