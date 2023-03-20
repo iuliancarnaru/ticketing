@@ -171,8 +171,8 @@ packages:
       '@popperjs/core': 2.11.6
     dev: false
 
-  /caniuse-lite/1.0.30001466:
-    resolution: {integrity: sha512-ewtFBSfWjEmxUgNBSZItFSmVtvk9zkwkl1OfRZlKA8slltRN+/C/tuGVrF9styXkN36Yu3+SeJ1qkXxDEyNZ5w==}
+  /caniuse-lite/1.0.30001468:
+    resolution: {integrity: sha512-zgAo8D5kbOyUcRAgSmgyuvBkjrGk5CGYG5TYgFdpQv+ywcyEpo1LOWoG8YmoflGnh+V+UsNuKYedsoYs0hzV5A==}
     dev: false
 
   /client-only/0.0.1:
@@ -262,7 +262,7 @@ packages:
     dependencies:
       '@next/env': 13.2.4
       '@swc/helpers': 0.4.14
-      caniuse-lite: 1.0.30001466
+      caniuse-lite: 1.0.30001468
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
