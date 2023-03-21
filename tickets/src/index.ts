@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { app } from './app';
+import { natsWrapper } from './nats-wrapper';
 
 const PORT = 4001;
 
@@ -13,6 +14,19 @@ async function main() {
   }
 
   try {
+    // connect to NATS
+    await natsWrapper.connect('ticketing', 'rand0m', 'http://nats-srv:4222');
+
+    natsWrapper.client.on('close', () => {
+      console.log('NATS connection closed');
+      process.exit();
+    });
+
+    // watching for interrupt or terminated signals
+    process.on('SIGINT', () => natsWrapper.client.close());
+    process.on('SIGTERM', () => natsWrapper.client.close());
+
+    // connect to MONGOOSE
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to Tickets-MongoDb');
   } catch (error) {

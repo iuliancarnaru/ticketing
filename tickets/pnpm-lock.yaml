@@ -19,6 +19,7 @@ specifiers:
   jsonwebtoken: ^9.0.0
   mongodb-memory-server: ^8.12.1
   mongoose: ^7.0.2
+  node-nats-streaming: ^0.3.2
   supertest: ^6.3.3
   ts-jest: ^29.0.5
   ts-node-dev: ^2.0.0
@@ -39,6 +40,7 @@ dependencies:
   express-validator: 6.15.0
   jsonwebtoken: 9.0.0
   mongoose: 7.0.2
+  node-nats-streaming: 0.3.2
   ts-node-dev: 2.0.0_v55w7ww6lqarvwghg77ziemtcm
   typescript: 4.9.5
 
