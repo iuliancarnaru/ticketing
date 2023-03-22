@@ -45,4 +45,5 @@ manifests:
     - infra/k8s/nats-depl.yaml
     - infra/k8s/auth-mongo-depl.yaml
     - infra/k8s/tickets-mongo-depl.yaml
+    - infra/k8s/orders-mongo-depl.yaml
     - infra/k8s/ingress-srv.yaml

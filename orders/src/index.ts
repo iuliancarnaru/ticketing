@@ -44,13 +44,13 @@ async function main() {
 
     // connect to MONGOOSE
     await mongoose.connect(process.env.MONGO_URI);
-    console.log('Connected to Tickets-MongoDb');
+    console.log('Connected to Orders-MongoDb');
   } catch (error) {
     console.error(error);
   }
 
   app.listen(PORT, () =>
-    console.log(`Tickets service running on port: ${PORT}`)
+    console.log(`Orders service running on port: ${PORT}`)
   );
 }
 
