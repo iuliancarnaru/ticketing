@@ -20,6 +20,14 @@ build:
         manual:
           - dest: .
             src: 'src/**/*.ts'
+    - image: iuliancarnaru/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.ts'
     - image: iuliancarnaru/client
       context: client
       docker:
@@ -33,6 +41,7 @@ manifests:
     - infra/k8s/auth-depl.yaml
     - infra/k8s/client-depl.yaml
     - infra/k8s/tickets-depl.yaml
+    - infra/k8s/orders-depl.yaml
     - infra/k8s/nats-depl.yaml
     - infra/k8s/auth-mongo-depl.yaml
     - infra/k8s/tickets-mongo-depl.yaml
