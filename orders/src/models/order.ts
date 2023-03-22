@@ -1,17 +1,19 @@
+import { OrderStatus } from '@tkts/common';
 import { Schema, model, Model, Document } from 'mongoose';
+import { TicketDocument } from './ticket';
 
 interface OrderAttrs {
   userId: string;
   status: OrderStatus;
   expiresAt: Date;
-  ticket: TicketDoc;
+  ticket: TicketDocument;
 }
 
 interface OrderDocument extends Document {
   userId: string;
-  status: string;
+  status: OrderStatus;
   expiresAt: Date;
-  ticket: TicketDoc;
+  ticket: TicketDocument;
 }
 
 interface OrderModel extends Model<OrderDocument> {
@@ -27,6 +29,8 @@ const orderSchema = new Schema<OrderAttrs>(
     status: {
       type: String,
       required: true,
+      enum: Object.values(OrderStatus),
+      default: OrderStatus.Created,
     },
     expiresAt: {
       type: Schema.Types.Date,
