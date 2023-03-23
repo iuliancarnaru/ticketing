@@ -35,6 +35,7 @@ const ticketSchema = new Schema<TicketAttrs>(
         ret.id = ret._id;
         delete ret._id;
       },
+      versionKey: false,
     },
   }
 );

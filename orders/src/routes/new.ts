@@ -32,8 +32,6 @@ router.post(
     // find the ticket the user is trying to order in the database
     const ticket = await Ticket.findById(ticketId);
 
-    console.log('ticket: ', ticket);
-
     if (!ticket) {
       throw new NotFoundError();
     }

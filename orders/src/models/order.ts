@@ -46,6 +46,7 @@ const orderSchema = new Schema<OrderAttrs>(
         ret.id = ret._id;
         delete ret._id;
       },
+      versionKey: false,
     },
   }
 );
