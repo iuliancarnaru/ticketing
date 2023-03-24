@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tkts/common": "^1.0.6",
-    "@types/node": "^18.15.5",
+    "@tkts/common": "^1.0.7",
+    "@types/node": "^18.15.7",
     "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.2"
