@@ -13,7 +13,7 @@ import { natsWrapper } from '../nats-wrapper';
 const router = express.Router();
 
 router.put(
-  '/api/tickets/:id',
+  '/api/tickets/:ticketId',
   requireAuth,
   [
     body('title').not().isEmpty().withMessage('Title is required'),
@@ -23,7 +23,8 @@ router.put(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const ticket = await Ticket.findById(req.params.id);
+    const { ticketId } = req.params;
+    const ticket = await Ticket.findById(ticketId);
 
     if (!ticket) {
       throw new NotFoundError();
