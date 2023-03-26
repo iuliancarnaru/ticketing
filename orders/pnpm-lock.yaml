@@ -19,6 +19,7 @@ specifiers:
   jsonwebtoken: ^9.0.0
   mongodb-memory-server: ^8.12.1
   mongoose: ^7.0.3
+  mongoose-update-if-current: ^1.4.0
   node-nats-streaming: ^0.3.2
   supertest: ^6.3.3
   ts-jest: ^29.0.5
@@ -40,6 +41,7 @@ dependencies:
   express-validator: 6.15.0
   jsonwebtoken: 9.0.0
   mongoose: 7.0.3
+  mongoose-update-if-current: 1.4.0_mongoose@7.0.3
   node-nats-streaming: 0.3.2
   ts-node-dev: 2.0.0_z3vu5dg2hu3jqyh3anri5tms2q
   typescript: 4.9.5
@@ -2271,6 +2273,11 @@ packages:
       keygrip: 1.1.0
     dev: false
 
+  /core-js/3.29.1:
+    resolution: {integrity: sha512-+jwgnhg6cQxKYIIjGtAHq2nwUOolo9eoFZ4sHfUH09BLXBgxnH4gA0zEd+t+BO2cNB8idaBtZFcFTRjQJRJmAw==}
+    requiresBuild: true
+    dev: false
+
   /create-require/1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: false
@@ -3672,6 +3679,18 @@ packages:
       saslprep: 1.0.3
     dev: false
 
+  /mongoose-update-if-current/1.4.0_mongoose@7.0.3:
+    resolution: {integrity: sha512-Rau2nvdiLExqXrSOwMMgDYQgf/fwTJQpPidTcT7C9UMQ282gTKXjDuh5vrjVvVQpfuvkiPis0tGHdXffaD54bg==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      mongoose: '>=5.0.0'
+    dependencies:
+      core-js: 3.29.1
+      kareem: 2.5.1
+      mongoose: 7.0.3
+      regenerator-runtime: 0.13.11
+    dev: false
+
   /mongoose/7.0.3:
     resolution: {integrity: sha512-3n8vc1/mssuxKa6vfghSocp3MeiCFYzhX36Ok+PsDNNYzHC9tw3rNkAMLemIwZ2jgXqkZ7CfKOxkzjp/d/SWfg==}
     engines: {node: '>=14.0.0'}
@@ -4016,6 +4035,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: false
+
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: false
 
   /require-directory/2.1.1:

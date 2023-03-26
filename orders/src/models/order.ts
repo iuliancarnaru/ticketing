@@ -14,6 +14,7 @@ interface OrderDocument extends Document {
   status: OrderStatus;
   expiresAt: Date;
   ticket: TicketDocument;
+  version: number;
 }
 
 interface OrderModel extends Model<OrderDocument> {

@@ -1,6 +1,7 @@
 import { OrderStatus } from '@tkts/common';
 import { Schema, model, Document, Model } from 'mongoose';
 import { Order } from './order';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 interface TicketAttrs {
   id: string;
@@ -11,11 +12,16 @@ interface TicketAttrs {
 export interface TicketDocument extends Document {
   title: string;
   price: number;
+  version: number;
   isReserved(): Promise<boolean>;
 }
 
 interface TicketModel extends Model<TicketDocument> {
   build(attrs: TicketAttrs): TicketDocument;
+  findByEvent(event: {
+    id: string;
+    version: number;
+  }): Promise<TicketDocument | null>;
 }
 
 const ticketSchema = new Schema<TicketAttrs>(
@@ -41,11 +47,32 @@ const ticketSchema = new Schema<TicketAttrs>(
   }
 );
 
+ticketSchema.set('versionKey', 'version');
+ticketSchema.plugin(updateIfCurrentPlugin);
+
+////////////////////////////////////////////////
+// updateIfCurrentPlugin manual implementation
+////////////////////////////////////////////////
+// ticketSchema.pre('save', function (done) {
+//   this.$where = {
+//     version: this.get('version') - 1,
+//   };
+
+//   done();
+// });
+
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
   return new Ticket({
     _id: attrs.id,
     title: attrs.title,
     price: attrs.price,
+  });
+};
+
+ticketSchema.statics.findByEvent = (event: { id: string; version: number }) => {
+  return Ticket.findOne({
+    _id: event.id,
+    version: event.version - 1,
   });
 };
 
