@@ -43,6 +43,7 @@ it('sets the userId of the ticket', async () => {
 
   const updatedTicket = Ticket.findById(ticket.id);
 
+  // @ts-ignore
   expect(updatedTicket!.orderId).toEqual(data.id);
 });
 
@@ -52,4 +53,12 @@ it('ack the message', async () => {
   await listener.onMessage(data, msg);
 
   expect(msg.ack).toHaveBeenCalled();
+});
+
+it('publishes a ticket update event', async () => {
+  const { listener, ticket, data, msg } = await setup();
+
+  await listener.onMessage(data, msg);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
