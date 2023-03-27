@@ -40,4 +40,10 @@ it('update the ticket, publish an event and aks the message', async () => {
   const { msg, data, ticket, orderId, listener } = await setup();
 
   await listener.onMessage(data, msg);
+
+  const updatedTicket = await Ticket.findById(ticket.id);
+
+  expect(updatedTicket?.orderId).not.toBeDefined();
+  expect(msg.ack).toHaveBeenCalled();
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
