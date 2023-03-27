@@ -1,5 +1,6 @@
 import { OrderStatus } from '@tkts/common';
 import { Schema, model, Model, Document } from 'mongoose';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 import { TicketDocument } from './ticket';
 
 interface OrderAttrs {
@@ -51,6 +52,9 @@ const orderSchema = new Schema<OrderAttrs>(
     },
   }
 );
+
+orderSchema.set('versionKey', 'version');
+orderSchema.plugin(updateIfCurrentPlugin);
 
 orderSchema.statics.build = (attrs: OrderAttrs) => {
   return new Order(attrs);
