@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import { app } from './app';
+import { OrderCancelledListener } from './events/listeners/order-canceled-listener';
+import { OrderCreatedListener } from './events/listeners/order-created-listener';
 import { natsWrapper } from './nats-wrapper';
 
 const PORT = 4001;
@@ -41,6 +43,9 @@ async function main() {
     // watching for interrupt or terminated signals
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
+
+    new OrderCreatedListener(natsWrapper.client).listen();
+    new OrderCancelledListener(natsWrapper.client).listen();
 
     // connect to MONGOOSE
     await mongoose.connect(process.env.MONGO_URI);

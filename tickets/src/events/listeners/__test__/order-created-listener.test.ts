@@ -41,10 +41,9 @@ it('sets the userId of the ticket', async () => {
 
   await listener.onMessage(data, msg);
 
-  const updatedTicket = Ticket.findById(ticket.id);
+  const updatedTicket = await Ticket.findById(ticket.id);
 
-  // @ts-ignore
-  expect(updatedTicket!.orderId).toEqual(data.id);
+  expect(updatedTicket?.orderId).toEqual(data.id);
 });
 
 it('ack the message', async () => {
