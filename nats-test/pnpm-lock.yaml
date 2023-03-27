@@ -1,14 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@tkts/common': ^1.0.8
+  '@tkts/common': ^1.0.9
   '@types/node': ^18.15.10
   node-nats-streaming: ^0.3.2
   ts-node-dev: ^2.0.0
   typescript: ^5.0.2
 
 dependencies:
-  '@tkts/common': 1.0.8
+  '@tkts/common': 1.0.9
   '@types/node': 18.15.10
   node-nats-streaming: 0.3.2
   ts-node-dev: 2.0.0_zd7fjxbseldtiwc6h6ujrbvxuy
@@ -39,8 +39,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@tkts/common/1.0.8:
-    resolution: {integrity: sha512-cHO/A6jVa0bJ+C7ZlgYQiomTGOP8Q66tEuZdL0xkjdimKHRq8Rr8+UOtuYy1+YHAhLSyTtRbWy3ouleffu/Jog==}
+  /@tkts/common/1.0.9:
+    resolution: {integrity: sha512-6ATx59HqMVfDePevuDk9imGj9A7yYjjV+oGp14txdYwo4nwUXLI/fwk0rerahZ1VXA3+KJYDVz/Oy64G75VoDQ==}
     dependencies:
       '@types/cookie-session': 2.0.44
       '@types/express': 4.17.17

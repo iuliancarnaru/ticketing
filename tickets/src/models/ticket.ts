@@ -5,6 +5,7 @@ interface TicketAttrs {
   title: string;
   price: number;
   userId: string;
+  orderId?: string;
 }
 
 interface TicketDocument extends Document {
@@ -12,6 +13,7 @@ interface TicketDocument extends Document {
   price: number;
   userId: string;
   version: number;
+  orderId?: string;
 }
 
 interface TicketModel extends Model<TicketDocument> {
@@ -31,6 +33,9 @@ const ticketSchema = new Schema<TicketAttrs>(
     userId: {
       type: String,
       required: true,
+    },
+    orderId: {
+      type: String,
     },
   },
   {
