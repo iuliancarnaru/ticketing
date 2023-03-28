@@ -36,6 +36,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: iuliancarnaru/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: iuliancarnaru/client
       context: client
       docker:
@@ -52,8 +60,10 @@ manifests:
     - infra/k8s/orders-depl.yaml
     - infra/k8s/nats-depl.yaml
     - infra/k8s/expiration-depl.yaml
+    - infra/k8s/payments-depl.yaml
     - infra/k8s/auth-mongo-depl.yaml
     - infra/k8s/tickets-mongo-depl.yaml
     - infra/k8s/orders-mongo-depl.yaml
+    - infra/k8s/payments-mongo-depl.yaml
     - infra/k8s/expiration-redis-depl.yaml
     - infra/k8s/ingress-srv.yaml

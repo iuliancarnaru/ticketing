@@ -29,7 +29,7 @@ afterAll(async () => {
 });
 
 declare global {
-  var signin: () => string[];
+  var signin: (id?: string) => string[];
 }
 
 global.signin = () => {

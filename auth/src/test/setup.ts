@@ -27,7 +27,7 @@ afterAll(async () => {
 });
 
 declare global {
-  var signin: () => Promise<string[]>;
+  var signin: (id?: string) => Promise<string[]>;
 }
 
 global.signin = async () => {
