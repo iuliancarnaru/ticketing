@@ -1,3 +1,4 @@
+import { OrderCreatedListener } from './events/listeners/order-created-listener';
 import { natsWrapper } from './nats-wrapper';
 
 async function main() {
@@ -29,6 +30,8 @@ async function main() {
     // watching for interrupt or terminated signals
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
+
+    new OrderCreatedListener(natsWrapper.client).listen();
   } catch (error) {
     console.error(error);
   }
