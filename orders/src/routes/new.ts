@@ -60,7 +60,7 @@ router.post(
     await order.save();
 
     // publish an event saying that an order was created
-    new OrderCreatedPublisher(natsWrapper.client).publish({
+    await new OrderCreatedPublisher(natsWrapper.client).publish({
       id: order.id,
       version: order.version,
       status: order.status,

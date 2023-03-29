@@ -1,6 +1,5 @@
 import { Schema, model, Model, Document } from 'mongoose';
 import { Password } from '../services/password';
-// import * as argon2 from 'argon2';
 
 interface UserAttrs {
   email: string;
@@ -45,12 +44,6 @@ userSchema.pre('save', async function (done) {
     this.set('password', hashed);
     done();
   }
-
-  // without helper class using argon2
-  // if (this.isModified('password')) {
-  //   const hashed = await argon2.hash(this.get('password'));
-  //   this.set('password', hashed);
-  // }
 });
 
 // to enforce TS check
