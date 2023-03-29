@@ -62,4 +62,4 @@ orderSchema.statics.build = (attrs: OrderAttrs) => {
   });
 };
 
-const Order = model<OrderDocument, OrderModel>('Order', orderSchema);
+export const Order = model<OrderDocument, OrderModel>('Order', orderSchema);
