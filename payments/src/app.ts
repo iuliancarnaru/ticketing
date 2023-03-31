@@ -3,6 +3,7 @@ import 'express-async-errors';
 import { json } from 'body-parser';
 import { currentUser, errorHandler, NotFoundError } from '@tkts/common';
 import cookieSession from 'cookie-session';
+import { createPaymentRouter } from './routes/new';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(
 );
 
 app.use(currentUser);
+app.use(createPaymentRouter);
 
 // use 'all' to catch all methods (GET, POST...)
 app.all('*', async (req, res) => {
