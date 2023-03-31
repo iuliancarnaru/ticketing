@@ -3,7 +3,7 @@ import { OrderCreatedListener } from '../order-created-listener';
 import { OrderCreatedEvent, OrderStatus } from '@tkts/common';
 import mongoose from 'mongoose';
 import { Message } from 'node-nats-streaming';
-import { Order } from '../../../model/order';
+import { Order } from '../../../models/order';
 
 const setup = async () => {
   const listener = new OrderCreatedListener(natsWrapper.client);

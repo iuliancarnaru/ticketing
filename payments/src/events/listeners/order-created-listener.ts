@@ -1,7 +1,7 @@
 import { Listener, OrderCreatedEvent, Subjects } from '@tkts/common';
 import { queueGroupName } from './queue-group-name';
 import { Message } from 'node-nats-streaming';
-import { Order } from '../../model/order';
+import { Order } from '../../models/order';
 
 export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
   readonly subject = Subjects.OrderCreated;

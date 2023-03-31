@@ -29,10 +29,10 @@ afterAll(async () => {
 });
 
 declare global {
-  var signin: (id?: string) => string[];
+  var signing: (id?: string) => string[];
 }
 
-global.signin = () => {
+global.signing = (id?: string) => {
   // build a JWT payload { id, email}
   const payload = {
     id: new mongoose.Types.ObjectId().toHexString(),

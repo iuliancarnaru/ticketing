@@ -8,7 +8,7 @@ import {
   NotFoundError,
   OrderStatus,
 } from '@tkts/common';
-import { Order } from '../model/order';
+import { Order } from '../models/order';
 
 const router = express.Router();
 
