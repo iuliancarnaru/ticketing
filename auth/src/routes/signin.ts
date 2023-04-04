@@ -41,8 +41,8 @@ router.post(
         id: existingUser.id,
         email: existingUser.email,
       },
-      process.env.JWT_KEY!,
-      { expiresIn: '15m' }
+      process.env.JWT_KEY!
+      // { expiresIn: '15m' }
     );
 
     req.session = {
