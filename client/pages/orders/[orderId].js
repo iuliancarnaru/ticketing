@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import CheckoutForm from '../../components/checkout-form';
 
 const OrderShow = ({ order }) => {
   const [timeLeft, setTimeLeft] = useState('');
@@ -27,6 +28,7 @@ const OrderShow = ({ order }) => {
   return (
     <div>
       <h1>Time left to pay: {timeLeft} seconds</h1>
+      <CheckoutForm />
     </div>
   );
 };
