@@ -1,3 +1,5 @@
+import '../styles/globals.css';
+
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -13,6 +15,7 @@ const AppComponent = ({ Component, pageProps, currentUser }) => {
   const appearance = {
     theme: 'stripe',
   };
+
   const options = {
     appearance,
   };

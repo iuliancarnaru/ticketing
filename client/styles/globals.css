@@ -5,12 +5,17 @@
 * to the CardElement component.
 * https://stripe.com/docs/js/elements_object/create_element?type=card#elements_create-options-classes
 */
+
+/**
+ * Use the CSS tab above to style your Element's container.
+ */
 .StripeElement {
+  margin: 10px 0 20px 0;
   height: 40px;
   padding: 10px 12px;
-  width: 100%;
+  width: 400px;
   color: #32325d;
-  background-color: white;
+  background-color: rgb(192, 219, 155);
   border: 1px solid transparent;
   border-radius: 4px;
   box-shadow: 0 1px 3px 0 #e6ebf1;
