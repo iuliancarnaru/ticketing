@@ -1,11 +1,20 @@
 import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-
 import CardSection from './card-section';
+import useRequest from '../hooks/useRequest';
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ order }) {
   const stripe = useStripe();
   const elements = useElements();
+
+  const { doRequest, errors } = useRequest({
+    url: '/api/payments',
+    method: 'post',
+    body: {
+      orderId: order.id,
+    },
+    onSuccess: (payment) => console.log(payment),
+  });
 
   const handleSubmit = async (event) => {
     // We don't want to let default form submission happen here,
@@ -27,14 +36,17 @@ export default function CheckoutForm() {
     } else {
       // Send the token to your server.
       // This function does not exist yet; we will define it in the next step.
-      stripeTokenHandler(result.token);
+      doRequest({ token: result.token.id });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardSection />
-      <button disabled={!stripe}>Confirm order</button>
-    </form>
+    <>
+      {errors}
+      <form onSubmit={handleSubmit}>
+        <CardSection />
+        <button disabled={!stripe}>Confirm order</button>
+      </form>
+    </>
   );
 }

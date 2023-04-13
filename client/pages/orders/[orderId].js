@@ -28,7 +28,7 @@ const OrderShow = ({ order }) => {
   return (
     <div>
       <h1>Time left to pay: {timeLeft} seconds</h1>
-      <CheckoutForm />
+      <CheckoutForm order={order} />
     </div>
   );
 };
