@@ -2,6 +2,7 @@ import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import CardSection from './card-section';
 import useRequest from '../hooks/useRequest';
+import Router from 'next/router';
 
 export default function CheckoutForm({ order }) {
   const stripe = useStripe();
@@ -13,7 +14,7 @@ export default function CheckoutForm({ order }) {
     body: {
       orderId: order.id,
     },
-    onSuccess: (payment) => console.log(payment),
+    onSuccess: () => Router.push('/orders'),
   });
 
   const handleSubmit = async (event) => {
